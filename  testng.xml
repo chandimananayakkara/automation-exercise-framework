@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+    TestNG Suite Configuration
+
+    SUITE STRUCTURE:
+    ├── Smoke Tests (Critical path - run EVERY build)
+    │   ├── LoginTest
+    │   └── SignupTest
+    │
+    ├── Regression Tests (All tests - run before release)
+    │   ├── ProductTest
+    │   ├── ContactUsTest
+    │   └── SubscriptionTest
+    │
+    └── E2E Tests (Complete user journeys)
+        └── E2ECheckoutTest
+
+    PARALLEL EXECUTION:
+    - parallel="methods" → runs test methods in parallel
+    - thread-count="3" → max 3 tests simultaneously
+    - This dramatically reduces execution time!
+-->
+<suite name="AutomationExercise Test Suite"
+       parallel="methods"
+       thread-count="3"
+       verbose="2">
+
+    <!-- Global listener for reporting -->
+    <listeners>
+        <listener class-name="com.automationexercise.utils.TestListener"/>
+    </listeners>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SMOKE TESTS - Run every build            -->
+    <!-- ═══════════════════════════════════════ -->
+    <test name="Smoke Tests">
+        <classes>
+            <class name="com.automationexercise.tests.LoginTest">
+                <methods>
+                    <include name="testValidLogin"/>
+                    <include name="testInvalidLogin"/>
+                </methods>
+            </class>
+            <class name="com.automationexercise.tests.SignupTest">
+                <methods>
+                    <include name="testRegisterNewUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- REGRESSION TESTS - Run before release    -->
+    <!-- ═══════════════════════════════════════ -->
+    <test name="Regression Tests">
+        <classes>
+            <class name="com.automationexercise.tests.LoginTest"/>
+            <class name="com.automationexercise.tests.SignupTest"/>
+            <class name="com.automationexercise.tests.ProductTest"/>
+            <class name="com.automationexercise.tests.ContactUsTest"/>
+            <class name="com.automationexercise.tests.SubscriptionTest"/>
+        </classes>
+    </test>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- E2E TESTS - Complete user journeys       -->
+    <!-- ═══════════════════════════════════════ -->
+    <test name="E2E Tests">
+        <classes>
+            <class name="com.automationexercise.tests.E2ECheckoutTest"/>
+        </classes>
+    </test>
+
+</suite>
