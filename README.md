@@ -17,7 +17,7 @@
 
 ```
                         ┌─────────────────────────────────────────────┐ 
-                        │              testng.xml (Suite)            │ 
+                        │              testng.xml (Suite)             │ 
                         ├─────────────────────────────────────────────┤
                         │            Test Classes (tests/)            │
                         │    LoginTest │ SignupTest │ E2ECheckoutTest │
